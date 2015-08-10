@@ -13,4 +13,8 @@ class MazeParser {
     return null
   }
   
+  def parseLine(chars: String, x: Int, y: Int): List[MazeItem] = {
+    chars.toList.map(c => parse(c.toString, x, y))
+  }
+  
 }

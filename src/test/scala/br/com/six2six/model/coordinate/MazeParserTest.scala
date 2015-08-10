@@ -43,5 +43,17 @@ class MazeParserTest {
       case _: Food => ok = true
     }
     assertTrue(ok)
+  }
+  
+  @Test
+  def shoudParseLine() {
+    val chars = "█ϖ·█··"
+    val parser = new MazeParser
+    val line = parser.parseLine(chars, 0, 0)
+    assertNotNull(line)
+    val result = line.groupBy(_.getClass.getSimpleName)
+    assertEquals(2, result("Wall").size)
+    assertEquals(1, result("Food").size)
+    assertEquals(3, result("Ground").size)
   }  
 }
